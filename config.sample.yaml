@@ -1,0 +1,33 @@
+---
+# basic configuration for your vault.
+# role_id for approle auth. This is currently the only supported auth method.
+role_id: <role-id>
+# secret_id for approle auth.
+secret_id: <secret-id>
+# address to vault.
+vault_addr: https://<vault-addr>:8200
+# if cert is not trusted.
+# insecure: true
+#
+# Path to pki secret store in vault.
+pki_path: pki
+
+# list of certs to check
+certs:
+# where is the private key stored.
+- private_key: bin/test/priv.key
+  # where is the certificate stored.
+  cert_file: bin/test/cert.pem
+  # where is the ca chain stored.
+  chain_file: bin/test/chain.pem
+  # cert role to use.
+  role: <role>
+  # cn for this certificate.
+  cn: <cn>
+  # Sans for this certificate.
+  sans:
+  - domain1.example.com
+  - domain2.example.com
+  # Hooks will be executed if the cert was renewed.
+  hooks:
+  - cat bin/test/cert.pem bin/test/chain.pem > bin/test/full_chain.pem
