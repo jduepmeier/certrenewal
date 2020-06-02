@@ -1,4 +1,4 @@
-module certrenewal
+module github.com/jduepmeier/certrenewal
 
 go 1.14
 
