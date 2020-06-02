@@ -1,9 +1,9 @@
 package main
 
 import (
+	"certrenewal"
 	"fmt"
 	"os"
-	"renewal"
 
 	"github.com/jessevdk/go-flags"
 	"github.com/sirupsen/logrus"
@@ -50,12 +50,12 @@ func run() (returnCode int, err error) {
 
 	logrus.SetLevel(level)
 
-	config, err := renewal.ReadConfig(opts.Config)
+	config, err := certrenewal.ReadConfig(opts.Config)
 	if err != nil {
 		return returnCode, err
 	}
 
-	return renewal.Run(config)
+	return certrenewal.Run(config)
 }
 
 func main() {

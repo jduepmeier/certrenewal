@@ -1,4 +1,4 @@
-module renewal
+module certrenewal
 
 go 1.14
 
