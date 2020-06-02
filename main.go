@@ -55,7 +55,7 @@ func LoginApprole(config *Config, client *api.Client) error {
 
 // Run runs the renewal process for the given config.
 // Returns 0 if no certifiate was renewed.
-// 1 if at least one certificate was renewed and 2 if an error occured.
+// 1 if at least one certificate was renewed and 2 if an error occurred.
 func Run(config *Config) (int, error) {
 	vaultConfig := api.DefaultConfig()
 	if config.VaultAddr != "" {
