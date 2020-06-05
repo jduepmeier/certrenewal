@@ -1,9 +1,10 @@
 package main
 
 import (
-	"certrenewal"
 	"fmt"
 	"os"
+
+	"github.com/jduepmeier/certrenewal"
 
 	"github.com/jessevdk/go-flags"
 	"github.com/sirupsen/logrus"
