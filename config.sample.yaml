@@ -11,6 +11,8 @@ vault_addr: https://<vault-addr>:8200
 #
 # Path to pki secret store in vault.
 pki_path: pki
+# Path to ssh secret store in vault.
+ssh_path: ssh
 
 # list of certs to check
 certs:
@@ -29,5 +31,15 @@ certs:
   - domain1.example.com
   - domain2.example.com
   # Hooks will be executed if the cert was renewed.
+  # Runs each line with '/bin/sh -c'
   hooks:
   - cat bin/test/cert.pem bin/test/chain.pem > bin/test/full_chain.pem
+
+ssh:
+- private_key: bin/test/ssh_id
+  cert: bin/test/ssh_id-cert.pub
+  public_key: bin/test/ssh_id.pub
+  role: test
+  hosts:
+  - domain1.example.com
+  hooks: []

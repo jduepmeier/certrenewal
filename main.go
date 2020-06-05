@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/hashicorp/vault/api"
 	"gopkg.in/yaml.v2"
@@ -11,16 +12,19 @@ import (
 
 // Config contains the configuration.
 type Config struct {
-	RoleID    string `yaml:"role_id"`
-	SecretID  string `yaml:"secret_id"`
-	VaultAddr string `yaml:"vault_addr"`
-	Certs     []Cert `yaml:"certs"`
-	PkiPath   string `yaml:"pki_path"`
-	Insecure  bool   `yaml:"insecure"`
+	RoleID    string    `yaml:"role_id"`
+	SecretID  string    `yaml:"secret_id"`
+	VaultAddr string    `yaml:"vault_addr"`
+	Certs     []Cert    `yaml:"certs"`
+	SSH       []SSHCert `yaml:"ssh"`
+	PkiPath   string    `yaml:"pki_path"`
+	SSHPath   string    `yaml:"ssh_path"`
+	Insecure  bool      `yaml:"insecure"`
 }
 
 func writeFile(filename string, data string) error {
-	return ioutil.WriteFile(filename, []byte(data+"\n"), 0600)
+	dataBytes := []byte(strings.TrimRight(data, "\n\r") + "\n")
+	return ioutil.WriteFile(filename, dataBytes, 0600)
 }
 
 // ReadConfig reads the configuration from the given file.
@@ -79,6 +83,16 @@ func Run(config *Config) (int, error) {
 			return 2, err
 		}
 
+		if renewed {
+			returnCode = 1
+		}
+	}
+
+	for _, cert := range config.SSH {
+		renewed, err := cert.CheckAndRenew(config, client)
+		if err != nil {
+			return 2, err
+		}
 		if renewed {
 			returnCode = 1
 		}
