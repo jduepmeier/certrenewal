@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean test test-coverage
 
 bin/cert-renewal: bin *.go cmd/cert-renewal/*.go
 	go build -o bin/cert-renewal cmd/cert-renewal/*.go
@@ -8,3 +8,11 @@ bin:
 
 clean:
 	rm -rf bin
+
+test:
+	go test -cover
+
+test-coverage: bin
+	go test -coverprofile=bin/coverage.out
+	go tool cover -html=bin/coverage.out
+	rm bin/coverage.out
