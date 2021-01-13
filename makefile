@@ -1,6 +1,6 @@
 .PHONY: clean test test-coverage
 
-bin/cert-renewal: bin *.go cmd/cert-renewal/*.go
+bin/cert-renewal: bin go.mod go.sum *.go cmd/cert-renewal/*.go
 	go build -o bin/cert-renewal cmd/cert-renewal/*.go
 
 bin:
