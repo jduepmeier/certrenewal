@@ -10,12 +10,15 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+var build = "dev"
+
 type opts struct {
 	Config    string `short:"c" long:"config" default:"config.yaml" description:"path to config"`
 	Insecure  bool   `short:"k" long:"insecure" description:"do not validate ca-certificate"`
 	LogFormat string `short:"f" long:"log-format" description:"output format for logging"`
 	LogOutput string `short:"o" long:"log-output" description:"output file for logging (- is stderr)"`
 	LogLevel  string `short:"l" long:"log-level" description:"level to log"`
+	Version   bool   `short:"v" long:"version" description:"show version and exit"`
 }
 
 func run() (returnCode int, err error) {
@@ -27,6 +30,11 @@ func run() (returnCode int, err error) {
 
 	_, err = flags.Parse(&opts)
 	if err != nil {
+		return returnCode, nil
+	}
+
+	if opts.Version {
+		fmt.Printf("%s - %s\n", os.Args[0], build)
 		return returnCode, nil
 	}
 
