@@ -1,6 +1,6 @@
 # certrenewal
 [![Go Report Card](https://goreportcard.com/badge/github.com/jduepmeier/certrenewal)](https://goreportcard.com/report/github.com/jduepmeier/certrenewal)
-[![Documentation](https://pkg.go.dev/github.com/jduepmeier/certrenewal?status.svg)](https://pkg.go.dev/github.com/jduepmeier/certrenewal)
+[![Go Reference](https://pkg.go.dev/badge/github.com/jduepmeier/certrenewal.svg)](https://pkg.go.dev/github.com/jduepmeier/certrenewal)
 
 Tool to renew certificates from [hashicorp vault](https://www.vaultproject.io/).
 
