@@ -64,6 +64,10 @@ func run() (returnCode int, err error) {
 		return returnCode, err
 	}
 
+	if opts.Insecure {
+		config.Insecure = opts.Insecure
+	}
+
 	return certrenewal.Run(config)
 }
 

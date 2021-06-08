@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* fix -k, --insecure does not work
+
 ## [1.0.0] - 2021-04-25
 
 * renew certificates
