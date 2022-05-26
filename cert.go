@@ -86,7 +86,7 @@ func (cert *Cert) RunHooks() (err error) {
 		cmd := exec.Command("/bin/sh", "-c", hook)
 		err = cmd.Run()
 		if err != nil {
-			return err
+			return fmt.Errorf("%s %w: %s", hook, ErrHookFailed, err)
 		}
 	}
 	return nil

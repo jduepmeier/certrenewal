@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 
 	"github.com/jduepmeier/certrenewal"
@@ -21,7 +22,7 @@ type opts struct {
 	Version   bool   `short:"v" long:"version" description:"show version and exit"`
 }
 
-func run() (returnCode int, err error) {
+func run(args []string, stdout io.Writer, stderr io.Writer) (returnCode int, err error) {
 	opts := opts{
 		LogFormat: "text",
 		LogOutput: "-",
@@ -50,6 +51,8 @@ func run() (returnCode int, err error) {
 		defer logfile.Close()
 
 		logrus.SetOutput(logfile)
+	} else {
+		logrus.SetOutput(stderr)
 	}
 
 	level, err := logrus.ParseLevel(opts.LogLevel)
@@ -72,7 +75,7 @@ func run() (returnCode int, err error) {
 }
 
 func main() {
-	returnCode, err := run()
+	returnCode, err := run(os.Args, os.Stdout, os.Stderr)
 	if err != nil {
 		logrus.Error(err)
 	}

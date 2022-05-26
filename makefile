@@ -10,9 +10,9 @@ clean:
 	rm -rf bin
 
 test:
-	go test -cover
+	go test -cover ./...
 
 test-coverage: bin
-	go test -coverprofile=bin/coverage.out
+	go test -coverprofile=bin/coverage.out ./...
 	go tool cover -html=bin/coverage.out
 	rm bin/coverage.out

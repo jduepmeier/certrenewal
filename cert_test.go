@@ -5,6 +5,8 @@ import (
 	"os"
 	"path"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func checkFileContent(t *testing.T, filename, content string) {
@@ -45,4 +47,43 @@ func TestWriteFiles(t *testing.T) {
 	checkFileContent(t, cert.PrivateKey, certData.PrivateKey+"\n")
 	checkFileContent(t, cert.CertFile, certData.Certificate+"\n")
 	checkFileContent(t, cert.ChainFile, certData.Chain[0]+"\n")
+}
+
+func TestHooks(t *testing.T) {
+	tests := []struct {
+		name string
+		err  error
+		cert *Cert
+	}{
+		{
+			name: "no-hooks",
+			cert: &Cert{},
+			err:  nil,
+		},
+		{
+			name: "false",
+			cert: &Cert{
+				Hooks: []string{
+					"/bin/false",
+				},
+			},
+			err: ErrHookFailed,
+		},
+		{
+			name: "no-error",
+			cert: &Cert{
+				Hooks: []string{
+					"/bin/true",
+				},
+			},
+			err: nil,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			err := test.cert.RunHooks()
+			assert.ErrorIs(t, err, test.err)
+		})
+	}
 }

@@ -10,5 +10,6 @@ var (
 	// ErrIssue reflects a problem with the cert renewal.
 	ErrIssue = errors.New("cannot issue new certificate")
 	// ErrCert reflects a problem with the cert.
-	ErrCert = errors.New("problem with cert")
+	ErrCert       = errors.New("problem with cert")
+	ErrHookFailed = errors.New("hook failed")
 )

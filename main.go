@@ -3,44 +3,14 @@ package certrenewal
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strings"
 
 	"github.com/hashicorp/vault/api"
-	"gopkg.in/yaml.v2"
 )
-
-// Config contains the configuration.
-type Config struct {
-	RoleID    string    `yaml:"role_id"`
-	SecretID  string    `yaml:"secret_id"`
-	VaultAddr string    `yaml:"vault_addr"`
-	Certs     []Cert    `yaml:"certs"`
-	SSH       []SSHCert `yaml:"ssh"`
-	PkiPath   string    `yaml:"pki_path"`
-	SSHPath   string    `yaml:"ssh_path"`
-	Insecure  bool      `yaml:"insecure"`
-}
 
 func writeFile(filename string, data string) error {
 	dataBytes := []byte(strings.TrimRight(data, "\n\r") + "\n")
 	return ioutil.WriteFile(filename, dataBytes, 0600)
-}
-
-// ReadConfig reads the configuration from the given file.
-func ReadConfig(configPath string) (*Config, error) {
-	config := &Config{}
-	file, err := os.Open(configPath)
-	if err != nil {
-		return config, fmt.Errorf("%w: %s", ErrConfig, err)
-	}
-	decoder := yaml.NewDecoder(file)
-
-	err = decoder.Decode(config)
-	if err != nil {
-		err = fmt.Errorf("%w: %s", ErrConfig, err)
-	}
-	return config, err
 }
 
 // LoginApprole gets a token from the approle config.
