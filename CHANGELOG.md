@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
-## [1.1.0] - 2021-04-25
+## [1.1.1] - 2023-02-23
+
+* Bump golang.org/x/net from 0.5.0 to 0.7.0
+
+## [1.1.0] - 2023-02-23
 
 * build(goreleaser): remove deprecated config
 * fix(deps): update module github.com/stretchr/testify to v1.8.1
