@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/hashicorp/vault/api v1.9.0
-	github.com/jessevdk/go-flags v1.4.0
+	github.com/jessevdk/go-flags v1.5.0
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.7.1
