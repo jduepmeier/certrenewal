@@ -30,6 +30,8 @@ certs:
   sans:
   - domain1.example.com
   - domain2.example.com
+  ip_sans:
+  - 127.0.0.1
   # Hooks will be executed if the cert was renewed.
   # Runs each line with '/bin/sh -c'
   hooks:

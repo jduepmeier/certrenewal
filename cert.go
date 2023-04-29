@@ -30,6 +30,7 @@ type Cert struct {
 	Role       string   `yaml:"role"`
 	CN         string   `yaml:"cn"`
 	SANS       []string `yaml:"sans"`
+	IPS        []string `yaml:"ip_sans"`
 	Hooks      []string `yaml:"hooks"`
 	data       CertData
 }
@@ -48,6 +49,7 @@ func (cert *Cert) issue(config *Config, client *api.Client) error {
 	data := map[string]interface{}{
 		"common_name": cert.CN,
 		"alt_names":   strings.Join(cert.SANS, ","),
+		"ip_sans":     strings.Join(cert.IPS, ","),
 	}
 	certResponse, err := client.Logical().Write(fmt.Sprintf("%s/issue/%s", config.PkiPath, cert.Role), data)
 	if err != nil {
