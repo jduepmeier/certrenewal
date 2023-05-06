@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 1.2.0 (2023-05-06)
+
+### Feat
+
+- **cert**: check ip sans in tls cert for changes
+
+### Fix
+
+- **deps**: update module github.com/hashicorp/vault/api to v1.9.1
+- **deps**: update module golang.org/x/crypto to v0.8.0
+- **deps**: update module golang.org/x/crypto to v0.7.0
+- **deps**: update module github.com/stretchr/testify to v1.8.2
+
 ## 1.1.2 (2023-02-23)
 
 ### Fix
