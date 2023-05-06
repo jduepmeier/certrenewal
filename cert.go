@@ -131,6 +131,21 @@ func (cert *Cert) needsRenewal(config *Config) (bool, error) {
 			return true, nil
 		}
 	}
+	expectedIPs := sort.StringSlice(cert.IPS)
+	realIPsStrings := make([]string, 0, len(pubFile.IPAddresses))
+
+	for _, ip := range pubFile.IPAddresses {
+		realIPsStrings = append(realIPsStrings, ip.String())
+	}
+	realIPs := sort.StringSlice(realIPsStrings)
+	if len(expectedIPs) != len(realIPs) {
+		return true, nil
+	}
+	for i, ip := range expectedIPs {
+		if ip != realIPs[i] {
+			return true, nil
+		}
+	}
 
 	now := time.Now()
 	if now.Add(10 * 24 * time.Hour).After(pubFile.NotAfter) {
