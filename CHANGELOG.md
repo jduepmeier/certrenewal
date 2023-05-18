@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.2.1 (2023-05-18)
+
+### Fix
+
+- **deps**: update module golang.org/x/crypto to v0.9.0
+- **deps**: update module github.com/sirupsen/logrus to v1.9.2
+
 ## 1.2.0 (2023-05-06)
 
 ### Feat
