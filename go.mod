@@ -3,7 +3,7 @@ module github.com/jduepmeier/certrenewal
 go 1.18
 
 require (
-	github.com/hashicorp/vault/api v1.9.1
+	github.com/hashicorp/vault/api v1.9.2
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/sirupsen/logrus v1.9.2
@@ -16,6 +16,7 @@ require (
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
+	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-hclog v1.2.0 // indirect
@@ -38,5 +39,4 @@ require (
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/time v0.0.0-20220411224347-583f2d630306 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
-	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 )
