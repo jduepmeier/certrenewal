@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 1.2.2 (2023-08-27)
+
+### Fix
+
+- **deps**: update module golang.org/x/crypto to v0.12.0
+- **deps**: update module golang.org/x/crypto to v0.11.0
+- **deps**: update module golang.org/x/crypto to v0.10.0
+- **deps**: update module github.com/stretchr/testify to v1.8.4
+- **deps**: update module github.com/sirupsen/logrus to v1.9.3
+- **deps**: update module github.com/hashicorp/vault/api to v1.9.2
+- **deps**: update module github.com/stretchr/testify to v1.8.3
+
 ## 1.2.1 (2023-05-18)
 
 ### Fix
