@@ -87,3 +87,37 @@ func TestHooks(t *testing.T) {
 		})
 	}
 }
+
+func TestPkiPath(t *testing.T) {
+	pathFromConfig := "path-from-config"
+	pathFromCert := "path-from-cert"
+	config := &Config{
+		PkiPath: pathFromConfig,
+	}
+
+	tests := []struct {
+		name     string
+		expected string
+		cert     *Cert
+	}{
+		{
+			name:     "path-from-config",
+			expected: pathFromConfig,
+			cert:     &Cert{},
+		},
+		{
+			name:     "path-from-cert",
+			expected: pathFromCert,
+			cert: &Cert{
+				PkiPath: pathFromCert,
+			},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			actualPath := test.cert.pkiPath(config)
+			assert.Equal(t, test.expected, actualPath)
+		})
+	}
+}
