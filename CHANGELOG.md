@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.3.0 (2023-11-24)
+
+### Feat
+
+- **cert**: allow to overwrite the pki_path for certs
+
 ## 1.2.3 (2023-11-10)
 
 ### Fix
