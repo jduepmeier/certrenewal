@@ -28,6 +28,7 @@ type Cert struct {
 	CertFile   string   `yaml:"cert_file"`
 	ChainFile  string   `yaml:"chain_file"`
 	Role       string   `yaml:"role"`
+	PkiPath    string   `yaml:"pki_path"`
 	CN         string   `yaml:"cn"`
 	SANS       []string `yaml:"sans"`
 	IPS        []string `yaml:"ip_sans"`
@@ -45,13 +46,21 @@ func (cert *Cert) Issue(config *Config, client *api.Client) error {
 	return err
 }
 
+// returns the pki_path from the cert or the default one from the config
+func (cert *Cert) pkiPath(config *Config) string {
+	if cert.PkiPath != "" {
+		return cert.PkiPath
+	}
+	return config.PkiPath
+}
+
 func (cert *Cert) issue(config *Config, client *api.Client) error {
 	data := map[string]interface{}{
 		"common_name": cert.CN,
 		"alt_names":   strings.Join(cert.SANS, ","),
 		"ip_sans":     strings.Join(cert.IPS, ","),
 	}
-	certResponse, err := client.Logical().Write(fmt.Sprintf("%s/issue/%s", config.PkiPath, cert.Role), data)
+	certResponse, err := client.Logical().Write(fmt.Sprintf("%s/issue/%s", cert.pkiPath(config), cert.Role), data)
 	if err != nil {
 		return err
 	}
