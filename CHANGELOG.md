@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 1.3.1 (2024-04-03)
+
+### Fix
+
+- **deps**: update module github.com/hashicorp/vault/api to v1.12.2
+- **deps**: update module golang.org/x/crypto to v0.21.0
+- **deps**: update module github.com/stretchr/testify to v1.9.0
+- **deps**: update module golang.org/x/crypto to v0.20.0
+- **deps**: update module golang.org/x/crypto to v0.19.0
+- **deps**: update module github.com/hashicorp/vault/api to v1.12.0
+- **deps**: update module github.com/hashicorp/vault/api to v1.11.0
+- **deps**: update module golang.org/x/crypto to v0.18.0
+- **deps**: update module golang.org/x/crypto to v0.17.0 [security]
+- **deps**: update module golang.org/x/crypto to v0.16.0
+
 ## 1.3.0 (2023-11-24)
 
 ### Feat
