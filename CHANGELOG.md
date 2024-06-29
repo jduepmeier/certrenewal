@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.3.2 (2024-06-29)
+
+### Fix
+
+- **deps**: update module github.com/hashicorp/vault/api to v1.14.0
+- **deps**: update module golang.org/x/crypto to v0.24.0
+- **deps**: update module github.com/jessevdk/go-flags to v1.6.1
+
 ## 1.3.1 (2024-04-03)
 
 ### Fix
