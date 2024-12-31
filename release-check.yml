@@ -1,18 +1,14 @@
-name: goreleaser
+name: goreleaser-check
 
 on:
   push:
-    # run only against tags
-    tags:
-      - "*"
-
-permissions:
-  contents: write
-  # packages: write
-  # issues: write
+    branches: [main]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
 
 jobs:
-  goreleaser:
+  goreleaser-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,8 +17,9 @@ jobs:
       - run: git fetch --force --tags
       - uses: actions/setup-go@v5
         with:
-          go-version: ">=1.23"
+          go-version: ">=1.20.1"
           cache: true
+      - run: sudo apt-get install -y gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu libsystemd-dev
       # More assembly might be required: Docker logins, GPG, etc. It all depends
       # on your needs.
       - uses: goreleaser/goreleaser-action@v6
@@ -30,6 +27,6 @@ jobs:
           # either 'goreleaser' (default) or 'goreleaser-pro':
           distribution: goreleaser
           version: latest
-          args: release --clean
+          args: check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
