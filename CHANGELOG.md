@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.3.7 (2025-09-03)
+
+### Fix
+
+- **deps**: update module golang.org/x/crypto to v0.41.0
+- **deps**: update module github.com/stretchr/testify to v1.11.1
+
 ## 1.3.6 (2025-07-06)
 
 ### Fix
