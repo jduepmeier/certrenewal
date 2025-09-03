@@ -2,7 +2,7 @@ module github.com/jduepmeier/certrenewal
 
 go 1.23.0
 
-toolchain go1.24.4
+toolchain go1.25.1
 
 require (
 	github.com/hashicorp/vault/api v1.20.0
