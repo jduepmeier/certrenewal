@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.3.9 (2025-12-15)
+
+### Fix
+
+- **deps**: update module golang.org/x/crypto to v0.46.0
+- **deps**: update module golang.org/x/crypto to v0.45.0 [security]
+
 ## 1.3.8 (2025-10-11)
 
 ### Fix
