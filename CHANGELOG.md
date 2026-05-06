@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.3.11 (2026-05-06)
+
+### Fix
+
+- **deps**: update module golang.org/x/crypto to v0.50.0
+- **deps**: update module github.com/hashicorp/vault/api to v1.23.0
+
 ## 1.3.10 (2026-03-08)
 
 ### Fix
