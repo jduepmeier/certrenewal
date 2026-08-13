@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.3.13 (2026-08-13)
+
+### Fix
+
+- **deps**: update indirect dependency go-jose => 4.1.4
+
 ## 1.3.12 (2026-08-13)
 
 ### Fix
