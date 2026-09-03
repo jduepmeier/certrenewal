@@ -1,6 +1,6 @@
 module github.com/jduepmeier/certrenewal
 
-go 1.25.0
+go 1.26.0
 
 toolchain go1.26.5
 
@@ -10,7 +10,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/sirupsen/logrus v1.9.4
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/crypto v0.55.0
+	golang.org/x/crypto v0.56.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
